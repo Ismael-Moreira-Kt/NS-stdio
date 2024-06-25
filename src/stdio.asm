@@ -1,3 +1,8 @@
+section .data
+    newline db 0x0A
+
+
+
 section .text
     global _stdin
     global _stdout
