@@ -26,3 +26,15 @@ _stdout:
     syscall
 
     ret
+
+
+_stdouLn:
+    mov rax, 1
+    mov rdi, 1
+    syscall
+
+    mov rsi, newline
+    mov rdx, 1
+    syscall
+
+    ret 
