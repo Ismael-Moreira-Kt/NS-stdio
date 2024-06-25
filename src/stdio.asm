@@ -1,6 +1,6 @@
 section .text
     global _stdin
-
+    global _stdout
 
 
 _stdin:
@@ -12,4 +12,12 @@ _stdin:
     syscall
     
     leave
+    ret
+
+
+_stdout:
+    mov rax, 1
+    mov rdi, 1
+    syscall
+
     ret
