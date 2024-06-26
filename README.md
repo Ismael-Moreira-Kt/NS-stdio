@@ -75,3 +75,63 @@
 
 
 <br><br>
+
+
+<div>
+    <h2>Examples of use</h2>
+    <br>
+    <p>stdin receives a variable as a parameter, through which it receives the input and does all the necessary processing to ensure that there are no problems.</p>
+    <p>To implement stdin, you could do something like this.</p>
+
+```asm
+section .bss
+    input1 resb 100
+
+
+
+    
+
+section .text
+    extern _stdin
+    global _start
+
+_start:
+    lea rdi, [input1]
+    call _stdin
+```
+
+<br>
+    <p>In turn, stdout receives a string and displays it on the screen.</p>
+    <p>stdoutLn, on the other hand, does something similar, but has the difference of introducing a line break at the end.</p>
+
+```asm
+section .data
+    hello db "Hello ", 0
+    hello_len equ $ - hello
+    world db "World!", 0
+    world_len equ $ - world
+
+
+
+
+
+section .text
+    extern _stdout
+    extern _stdoutLn
+    global _start
+
+
+
+_start:
+    mov rsi, world 
+    call _stdout
+
+    mov rdi, hello
+    call _stdoutLn
+
+    mov rax, 60               
+    xor rdi, rdi           
+    syscall
+```
+
+</div>
