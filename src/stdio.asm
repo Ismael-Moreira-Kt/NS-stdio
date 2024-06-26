@@ -8,7 +8,7 @@ section .data
 section .text
     global _stdin
     global _stdout
-
+    global _stdoutLn
 
 
 _stdin:
@@ -59,6 +59,27 @@ _stdout:
     mov rdi, 1
     syscall
 
+    ret
+
+
+
+_stdoutLn:
+    push rdi
+    call _strLen
+    pop rsi
+    mov rdx, rax
+
+    mov eax, 1
+    mov edi, 1
+    syscall
+
+    mov eax, 1
+    mov edi, 1
+    mov rsi, newline
+
+    mov rdx, 1
+    syscall
+    
     ret
 
 
