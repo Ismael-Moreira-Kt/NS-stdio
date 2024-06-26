@@ -33,3 +33,16 @@ _stdin:
     inc rbx
     inc rsi
     jmp .stdin_loop
+
+
+.stdin_end:
+    mov byte [rbx], 0
+    
+    pop rdi
+    pop rsi
+    pop rbx
+    
+    mov rsp, rbp
+    pop rbp
+
+    ret     
