@@ -37,12 +37,25 @@ _stdin:
 
 .stdin_end:
     mov byte [rbx], 0
-    
+
     pop rdi
     pop rsi
     pop rbx
-    
+
     mov rsp, rbp
     pop rbp
 
-    ret     
+    ret
+
+
+
+_stdout:
+    mov rdi, rsi
+    call _strLen
+    mov rdx, rax
+
+    mov rax, 1
+    mov rdi, 1
+    syscall
+
+    ret
