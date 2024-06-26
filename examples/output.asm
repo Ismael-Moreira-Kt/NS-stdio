@@ -9,14 +9,15 @@ section .data
 
 
 section .text
+    extern _stdout
     extern _stdoutLn
     global _start
 
 
 
 _start:
-    mov rdi, world 
-    call _stdoutLn
+    mov rsi, world 
+    call _stdout
 
     mov rdi, hello
     call _stdoutLn
