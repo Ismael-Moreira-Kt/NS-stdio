@@ -7,6 +7,7 @@ section .data
 
 section .text
     global _stdin
+    global _stdout
 
 
 
@@ -57,5 +58,21 @@ _stdout:
     mov rax, 1
     mov rdi, 1
     syscall
+
+    ret
+
+
+
+_strLen:
+    xor rcx, rcx
+    not rcx
+
+    xor al, al
+    repne scasb
+    
+    not rcx
+    dec rcx
+    
+    mov rax, rcx
 
     ret
