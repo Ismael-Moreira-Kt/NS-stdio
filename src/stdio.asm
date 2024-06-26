@@ -3,8 +3,11 @@ section .data
 
 
 
+
+
 section .text
     global _stdin
+
 
 
 _stdin:
@@ -16,3 +19,17 @@ _stdin:
 
     mov rbx, rdi
     mov rsi, rbx
+
+
+.stdin_loop:
+    mov rax, 0
+    mov rdi, 0
+    mov rdx, 1
+    syscall
+
+    cmp byte [rbx], 0x0A
+    je .stdin_end
+
+    inc rbx
+    inc rsi
+    jmp .stdin_loop
